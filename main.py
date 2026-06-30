@@ -8,7 +8,9 @@ import httpx
 
 # === КОНФИГУРАЦИЯ ===
 # Переменные берутся из настроек (Variables) на Railway для безопасности
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "6338351608:AAGMV_lCJvQnwnnVTTBmtqdT3SHhp9iy1zQ")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("❌ BOT_TOKEN не установлен!")
 SOURCE_CHAT_ID = int(os.environ.get("SOURCE_CHAT_ID", -1001471933679))  # Канал-источник
 TARGET_CHAT_ID = int(os.environ.get("TARGET_CHAT_ID", -1003469691743))  # Канал-зеркало
 
